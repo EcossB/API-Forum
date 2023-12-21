@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "topics")
@@ -17,18 +15,24 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ForoEntity {
+public class Topics {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String message;
-    private LocalDate creation_date = LocalDate.now();
+    private LocalDate creation_date;
     private boolean topic_status;
     private String author;
 
-
+    public Topics(TopicsData data) {
+        this.title = data.title();
+        this.message = data.message();
+        this.creation_date = LocalDate.now();
+        this.topic_status = true;
+        this.author = data.author();
+    }
 
 
     private void deactivateTopic(){
