@@ -39,4 +39,25 @@ public class TopicsService {
     }
 
 
+    public ResponseEntity<?> updateTopic(UpadteData data){
+        Topics topic = topicsRepository.getReferenceById(data.id());
+
+        topic.updateTopics(data);
+
+        TopicsResponseDto topicsResponseDto = new TopicsResponseDto(topic.getId(), topic.getTitle(), topic.getMessage(),
+                topic.getCreation_date(), topic.isActive() ,topic.getAuthor());
+
+        return ResponseEntity.ok().body(topicsResponseDto);
+
+    }
+
+    public ResponseEntity<?> deactivateTopic(Long id){
+        Topics topics = topicsRepository.getReferenceById(id);
+
+        topics.deactivateTopic();
+
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

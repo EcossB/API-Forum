@@ -35,8 +35,16 @@ public class Topics {
     }
 
 
-    private void deactivateTopic(){
+    public void deactivateTopic(){
         this.active = false;
     }
 
+
+    public void updateTopics(UpadteData data) {
+        this.title = data.title();
+        this.message = data.message();
+        this.creation_date = data.creation_date();
+        this.active = data.topic_status();
+        this.author = data.author();
+    }
 }

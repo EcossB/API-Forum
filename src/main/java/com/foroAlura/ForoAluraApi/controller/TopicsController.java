@@ -3,6 +3,7 @@ package com.foroAlura.ForoAluraApi.controller;
 
 import com.foroAlura.ForoAluraApi.domain.foro.TopicsData;
 import com.foroAlura.ForoAluraApi.domain.foro.TopicsService;
+import com.foroAlura.ForoAluraApi.domain.foro.UpadteData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -30,6 +31,17 @@ public class TopicsController {
     @GetMapping
     public ResponseEntity<?> getTopics(@PageableDefault(size=10) Pageable pageable){
         return topicsService.getTopics(pageable);
+    }
+
+    @PutMapping
+    public ResponseEntity<?> updateTopics(@RequestBody UpadteData data){
+
+        return topicsService.updateTopic(data);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deactivateTopic(@PathVariable Long id){
+        return topicsService.deactivateTopic(id);
     }
 
 }
