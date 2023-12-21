@@ -13,4 +13,9 @@ public record TopicsResponseDto(
         boolean topic_status,
         String author
 ) {
+
+    public TopicsResponseDto(Topics topics){
+        this(topics.getId(), topics.getTitle(), topics.getMessage(), topics.getCreation_date(), topics.isActive(), topics.getAuthor());
+    }
+
 }
