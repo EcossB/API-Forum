@@ -23,20 +23,20 @@ public class Topics {
     private String title;
     private String message;
     private LocalDate creation_date;
-    private boolean topic_status;
+    private boolean active;
     private String author;
 
     public Topics(TopicsData data) {
         this.title = data.title();
         this.message = data.message();
         this.creation_date = LocalDate.now();
-        this.topic_status = true;
+        this.active = true;
         this.author = data.author();
     }
 
 
     private void deactivateTopic(){
-        this.topic_status = false;
+        this.active = false;
     }
 
 }
